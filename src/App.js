@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Card, PageHeader, Typography } from 'antd'
+import { Card, PageHeader } from 'antd'
+import Text from 'antd/lib/typography/Text'
 import { Content, Footer } from 'antd/lib/layout/layout'
 import ScoreCard from './components/ScoreCard'
 import SetPlayers from './components/SetPlayers'
 import ThemeSwitch from './components/ThemeSwitch'
-import Paragraph from 'antd/lib/skeleton/Paragraph'
-import Title from 'antd/lib/skeleton/Title'
-import Text from 'antd/lib/typography/Text'
 
 function App ({ players }) {
   const [gameOn, setGameOn] = useState()
