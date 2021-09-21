@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
+import { Card, PageHeader } from 'antd'
+import { Content, Footer } from 'antd/lib/layout/layout'
+import ScoreCard from './components/ScoreCard'
+import SetPlayers from './components/SetPlayers'
+import ThemeSwitch from './components/ThemeSwitch'
 
-function App() {
+function App ({ players }) {
+  const [gameOn, setGameOn] = useState()
+
+  useEffect(() => {
+    if (players.length > 0)
+      setGameOn(true)
+  }, [players])
+
+  // const players = ['aidan', 'jo', 'bailey']
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <PageHeader
+        title='BJ'
+        subTitle='BlackJack'
+        style={{ border: '1px solid rgb(235, 237, 240)' }}
+        position='fixed'
+      />
+      <Content>
+        <Card style={{ maxWidth: '1000px', margin: '10px auto', textAlign: 'center' }}>
+          {!gameOn && <SetPlayers />}
+
+          {gameOn && players.map(player => <ScoreCard name={player} key={player} />)}
+        </Card>
+      </Content>
+
+      <ThemeSwitch />
+
+      <Footer style={{ textAlign: 'center' }}>BlackJack ©2021 Created by <a href='https://starkemedia.com' target='_blank' rel="noreferrer">StarkeMedia</a></Footer>
+    </>
+  )
 }
 
-export default App;
+function mapStateToProps (state) {
+  return {
+    players: state.players,
+  }
+}
+
+export default connect(mapStateToProps)(App)
