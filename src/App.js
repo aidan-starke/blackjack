@@ -14,7 +14,6 @@ function App ({ players }) {
       setGameOn(true)
   }, [players])
 
-  // const players = ['aidan', 'jo', 'bailey']
   return (
     <>
       <PageHeader
