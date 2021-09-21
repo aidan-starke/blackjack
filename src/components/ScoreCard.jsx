@@ -1,4 +1,5 @@
 import { Button, Card, Divider } from 'antd'
+import Text from 'antd/lib/typography/Text'
 import React, { useEffect, useState } from 'react'
 
 export default function ScoreCard ({ name }) {
@@ -26,7 +27,7 @@ export default function ScoreCard ({ name }) {
 
     return (
         <Card style={{ maxWidth: '350px', display: 'inline-flex', margin: 10 }} title={name}>
-            <p>Current chips: {player.chips}</p>
+            <Text>Current chips: {player.chips}</Text>
             <Divider />
             <div style={{ textAlign: 'center' }}>
                 <Button onClick={blackjack} style={{ margin: 10 }}>BlackJack!</Button>
@@ -34,9 +35,9 @@ export default function ScoreCard ({ name }) {
                 <Button onClick={lose} style={{ margin: 10 }}>Lose</Button>
             </div>
             {player.wins !== 0 && <Divider />}
-            {player.wins !== 0 && <p>Wins: {player.wins}</p>}
+            {player.wins !== 0 && <Text>Wins: {player.wins}</Text>}
             {player.losses !== 0 && <Divider />}
-            {player.losses !== 0 && <p>Losses: {player.losses}</p>}
+            {player.losses !== 0 && <Text>Losses: {player.losses}</Text>}
         </Card>
     )
 }
