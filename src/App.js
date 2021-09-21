@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Card, PageHeader } from 'antd'
+import { Card, PageHeader, Typography } from 'antd'
 import { Content, Footer } from 'antd/lib/layout/layout'
 import ScoreCard from './components/ScoreCard'
 import SetPlayers from './components/SetPlayers'
 import ThemeSwitch from './components/ThemeSwitch'
+import Paragraph from 'antd/lib/skeleton/Paragraph'
+import Title from 'antd/lib/skeleton/Title'
+import Text from 'antd/lib/typography/Text'
 
 function App ({ players }) {
   const [gameOn, setGameOn] = useState()
@@ -23,6 +26,11 @@ function App ({ players }) {
         position='fixed'
       />
       <Content>
+        <Card style={{ margin: '10px auto', maxWidth: '1000px' }} title='Rules'>
+          <Text>Auto betting of 10 chips, score a win when you reach 200 or a loss when you reach 0</Text>
+          <br />
+          <Text>On wins, player keeps extra chips won with BlackJacks!</Text>
+        </Card>
         <Card style={{ maxWidth: '1000px', margin: '10px auto', textAlign: 'center' }}>
           {!gameOn && <SetPlayers />}
 
